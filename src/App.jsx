@@ -1,32 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Vote from "./Vote";
-import Admin from "./Admin";
-import Results from "./Results";
+import Vote from "./components/Vote";
+import Results from "./components/Results";
 
 export default function App() {
   return (
     <Router>
-      <nav style={{
-        display: "flex",
-        justifyContent: "space-around",
-        padding: "12px",
-        backgroundColor: "#4CAF50",
-        color: "white",
-        fontWeight: "bold"
-      }}>
-        <Link to="/" style={{ color: "white", textDecoration: "none" }}>Vote</Link>
-        <Link to="/admin" style={{ color: "white", textDecoration: "none" }}>Admin</Link>
-        <Link to="/results" style={{ color: "white", textDecoration: "none" }}>Results</Link>
+      <nav style={{ display:"flex", justifyContent:"space-around", padding:12, background:"#4CAF50", color:"white" }}>
+        <Link style={{ color:"white", textDecoration:"none" }} to="/">Vote</Link>
+        <Link style={{ color:"white", textDecoration:"none" }} to="/results">Results</Link>
       </nav>
-
-      <div style={{ padding: 16 }}>
-        <Routes>
-          <Route path="/" element={<Vote pollId="demo_poll" />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/results" element={<Results pollId="demo_poll" />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Vote />} />
+        <Route path="/results" element={<Results />} />
+      </Routes>
     </Router>
   );
 }
